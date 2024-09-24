@@ -70,3 +70,7 @@ Test: Add matches with identical total scores but different starting times:
 "Team A" vs "Team B" (started first) with score 2-2.
 "Team C" vs "Team D" (started later) with score 1-3. \
 Expected Result: The match started later ("Team C vs Team D") should appear first in the list.
+
+# Questions
+* World Cup Scoreboard library that shows all the **ongoing matches** and their scores.
+* Bulk operations

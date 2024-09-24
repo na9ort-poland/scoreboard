@@ -24,9 +24,9 @@ public record Match(
         var scoreMatchTwo = match.homeTeam.score() + match.awayTeam.score();
 
         if (scoreMatchOne - scoreMatchTwo == 0) {
-            return this.createDateTime().compareTo(match.createDateTime);
+            return -this.createDateTime().compareTo(match.createDateTime);
         }
 
-        return scoreMatchOne - scoreMatchTwo;
+        return scoreMatchTwo - scoreMatchOne;
     }
 }

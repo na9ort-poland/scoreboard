@@ -2,26 +2,23 @@ package org.techideas.entity;
 
 import org.techideas.exception.DuplicateMatchException;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public record ScoreBoard (Set<Match> matches) {
+public record ScoreBoard (List<Match> matches) {
 
     public ScoreBoard() {
-        this(new TreeSet<>());
+        this(new ArrayList<>());
     }
 
-    public String show() {
+    public List<Match> getMatches() {
         return matches.stream()
                 .sorted()
-                .map(String::valueOf)
-                .collect(Collectors.joining("\\n"));
+                .collect(Collectors.toList());
     }
 
-    public void createMatch(Team homeTeam, Team awayTeam) {
-        var match = new Match(homeTeam, awayTeam);
-
+    public void addMatch(Match match) {
         if (matches.contains(match)) {
             throw new DuplicateMatchException(match);
         }
