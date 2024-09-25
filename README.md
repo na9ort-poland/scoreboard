@@ -1,3 +1,6 @@
+# Set Up
+* JVM: Amazon Corretto: 17.0.11
+
 # Coding Task
 You are working in a sports data company, and we would like you to develop a new Live Football
 World Cup Scoreboard library that shows all the ongoing matches and their scores.
@@ -37,22 +40,14 @@ Expected Result: The scoreboard should reflect the updated score "Team A 1 - Tea
 Test: Try to update the score of a match that is not on the scoreboard. \
 Expected Result: An error or a message indicating that the match does not exist.
 
-### Scenario 2.3: Updating the score to an invalid value (e.g., negative scores).
-Test: Try to update a match score with negative values, like -1 - 2. \
-Expected Result: An error or a message indicating that the score values are invalid.
-
 ## Finishing a Match
-### Scenario 3.1: Finishing an existing match.
-Test: Finish a match between "Team A" and "Team B". \
-Expected Result: The match should be removed from the scoreboard.
+### Scenario 3.1: Finishing all matches.
+Test: Add and finish multiple matches. \
+Expected Result: All matches should be removed from the scoreboard.
 
 ### Scenario 3.2: Finishing a non-existent match.
 Test: Try to finish a match that does not exist on the scoreboard. \
 Expected Result: An error or a message indicating that the match does not exist.
-
-### Scenario 3.3: Finishing all matches.
-Test: Add and finish multiple matches. \
-Expected Result: All matches should be removed from the scoreboard.
 
 ## Getting a Summary of Matches in Progress
 ### Scenario 4.1: Retrieve the summary with no matches in progress.
@@ -71,6 +66,6 @@ Test: Add matches with identical total scores but different starting times:
 "Team C" vs "Team D" (started later) with score 1-3. \
 Expected Result: The match started later ("Team C vs Team D") should appear first in the list.
 
-# Questions
-* World Cup Scoreboard library that shows all the **ongoing matches** and their scores.
-* Bulk operations
+# Improvements (out of the initial scope)
+* Add bulk operations: create matches, update matches, remove matches
+* Add a new field: MatchStatus as enum with values: STARTED, FINISHED
