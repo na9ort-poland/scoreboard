@@ -69,3 +69,5 @@ Expected Result: The match started later ("Team C vs Team D") should appear firs
 # Improvements (out of the initial scope)
 * Add bulk operations: create matches, update matches, remove matches
 * Add a new field: MatchStatus as enum with values: STARTED, FINISHED
+* SourceBoard as Singleton
+* Thread-Safe SourceBoard operations

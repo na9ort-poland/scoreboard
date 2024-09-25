@@ -30,20 +30,17 @@ public class GettingSummaryOfMatchesInProgressTest {
                 new Match(Team.ofNameAndScore("Spain", 1), Team.ofNameAndScore("Brazil", 2)));
 
         // when
-        var isMatchOneStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Mexico", 5),
                 Team.ofNameAndScore("Canada", 5));
-        var isMatchTwoStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Spain", 1),
                 Team.ofNameAndScore("Brazil", 2));
-        var isMatchThreeStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Germany", 2),
                 Team.ofNameAndScore("France", 2));
 
         // then
-        assertThat(isMatchOneStarted).isTrue();
-        assertThat(isMatchTwoStarted).isTrue();
-        assertThat(isMatchThreeStarted).isTrue();
         assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(3);
         assertThat(scoreBoard.getOrderedMatches().toArray()).containsExactlyElementsOf(expectedList);
     }
@@ -60,28 +57,23 @@ public class GettingSummaryOfMatchesInProgressTest {
                 new Match(Team.ofNameAndScore("Germany", 2), Team.ofNameAndScore("France", 2)));
 
         // when
-        var isMatchOneStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Mexico", 0),
                 Team.ofNameAndScore("Canada", 5));
-        var isMatchTwoStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Spain", 10),
                 Team.ofNameAndScore("Brazil", 2));
-        var isMatchThreeStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Germany", 2),
                 Team.ofNameAndScore("France", 2));
-        var isMatchFourStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Uruguay", 6),
                 Team.ofNameAndScore("Italy", 6));
-        var isMatchFiveStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndScore("Argentina", 3),
                 Team.ofNameAndScore("Australia", 1));
 
         // then
-        assertThat(isMatchOneStarted).isTrue();
-        assertThat(isMatchTwoStarted).isTrue();
-        assertThat(isMatchThreeStarted).isTrue();
-        assertThat(isMatchFourStarted).isTrue();
-        assertThat(isMatchFiveStarted).isTrue();
         assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(5);
         assertThat(scoreBoard.getOrderedMatches().toArray()).containsExactlyElementsOf(expectedList);
     }

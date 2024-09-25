@@ -8,19 +8,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MatchTest {
 
     @Test
-    void matchesWithSameTeamsShouldBeEqual() {
+    void shouldBeEqualWithSameTeams() {
         // given
         var teamOne = Team.ofNameAndZeroScore("Team One");
         var teamTwo = Team.ofNameAndZeroScore("Team Two");
         var matchOne = new Match(teamOne, teamTwo, LocalDateTime.now());
-        var matchTwo = new Match(teamOne, teamTwo, LocalDateTime.now().plusDays(1));
+        var matchTwo = new Match(teamOne, teamTwo, LocalDateTime.now());
 
         // when && then
         assertThat(matchOne).isEqualTo(matchTwo);
     }
 
     @Test
-    void matchesWithDifferentTeamsShouldNotBeEqual() {
+    void shouldNotBeEqualWithDifferentTeams() {
         // given
         var teamOne = Team.ofNameAndZeroScore("Team One");
         var teamTwo = Team.ofNameAndZeroScore("Team Two");
@@ -33,7 +33,7 @@ public class MatchTest {
     }
 
     @Test
-    void matchesWithSameTeamsShouldHaveSameHashCode() {
+    void shouldHaveSameHashCodeWithSameTeams() {
         // given
         var teamOne = Team.ofNameAndZeroScore("Team One");
         var teamTwo = Team.ofNameAndZeroScore("Team Two");
@@ -45,7 +45,7 @@ public class MatchTest {
     }
 
     @Test
-    void matchesWithDifferentTeamsShouldHaveDifferentHashCode() {
+    void shouldHaveDifferentHashCodeWithDifferentTeams() {
         // given
         var teamOne = Team.ofNameAndZeroScore("Team One");
         var teamTwo = Team.ofNameAndZeroScore("Team Two");
@@ -54,11 +54,11 @@ public class MatchTest {
         var matchTwo = new Match(teamOne, teamThree, LocalDateTime.now());
 
         // when && then
-        assertThat(matchOne.hashCode()).isNotEqualTo(matchTwo);
+        assertThat(matchOne.hashCode()).isNotEqualTo(matchTwo.hashCode());
     }
 
     @Test
-    void matchesWithSameTeamsAndDifferentDateTimeShouldBeEqual() {
+    void shouldBeEqualWithSameTeamsAndDifferentDateTime() {
         // given
         var teamOne = Team.ofNameAndZeroScore("Team One");
         var teamTwo = Team.ofNameAndZeroScore("Team Two");

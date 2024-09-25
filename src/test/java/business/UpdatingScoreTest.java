@@ -24,14 +24,11 @@ public class UpdatingScoreTest {
         var expectedValues = List.of(expectedMatch);
 
         // when
-        var isUpdatedOneSuccessful = scoreBoard.updateScore(expectedMatch, 1, 0);
-        var isUpdatedTwoSuccessful = scoreBoard.updateScore(expectedMatch, 1, 1);
-        var isUpdatedThreeSuccessful = scoreBoard.updateScore(expectedMatch, 2, 1);
+        scoreBoard.updateScore(expectedMatch, 1, 0);
+        scoreBoard.updateScore(expectedMatch, 1, 1);
+        scoreBoard.updateScore(expectedMatch, 2, 1);
 
         // then
-        assertThat(isUpdatedOneSuccessful).isTrue();
-        assertThat(isUpdatedTwoSuccessful).isTrue();
-        assertThat(isUpdatedThreeSuccessful).isTrue();
         assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(1);
         assertThat(scoreBoard.getOrderedMatches().toArray()).containsExactlyElementsOf(expectedValues);
     }

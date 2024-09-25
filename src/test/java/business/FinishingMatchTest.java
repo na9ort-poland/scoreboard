@@ -15,13 +15,13 @@ public class FinishingMatchTest {
     void shouldRemoveMatchesFromScoreBoard() {
         // given
         var scoreBoard = new ScoreBoard();
-        var isMatchOneStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndZeroScore("Home Team One"),
                 Team.ofNameAndZeroScore("Away Team One"));
-        var isMatchTwoStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndZeroScore("Home Team Two"),
                 Team.ofNameAndZeroScore("Away Team Two"));
-        var isMatchThreeStarted = scoreBoard.startMatch(
+        scoreBoard.startMatch(
                 Team.ofNameAndZeroScore("Home Team Three"),
                 Team.ofNameAndZeroScore("Away Team Three"));
         var expectedMatchOne = new Match(
@@ -35,18 +35,12 @@ public class FinishingMatchTest {
                 Team.ofNameAndZeroScore("Away Team Three"));
 
         // when
-        var isMatchOneFinished = scoreBoard.finishMatch(expectedMatchOne);
-        var isMatchTwoFinished = scoreBoard.finishMatch(expectedMatchTwo);
-        var isMatchThreeFinished = scoreBoard.finishMatch(expectedMatchThree);
+        scoreBoard.finishMatch(expectedMatchOne);
+        scoreBoard.finishMatch(expectedMatchTwo);
+        scoreBoard.finishMatch(expectedMatchThree);
 
         // then
-        assertThat(isMatchOneStarted).isTrue();
-        assertThat(isMatchTwoStarted).isTrue();
-        assertThat(isMatchThreeStarted).isTrue();
         assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(0);
-        assertThat(isMatchOneFinished).isTrue();
-        assertThat(isMatchTwoFinished).isTrue();
-        assertThat(isMatchThreeFinished).isTrue();
     }
 
     @Test

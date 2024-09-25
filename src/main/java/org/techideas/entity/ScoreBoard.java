@@ -22,34 +22,28 @@ public record ScoreBoard (Map<Match, Object> matches) {
                 .collect(Collectors.toList());
     }
 
-    public boolean startMatch(Team homeTeam, Team awayTeam) {
+    public void startMatch(Team homeTeam, Team awayTeam) {
         var newMatch = new Match(homeTeam, awayTeam);
         if (matches.containsKey(newMatch)) {
             throw new DuplicateMatchException(newMatch);
         }
 
         matches.put(newMatch, null);
-
-        return true;
     }
 
-    public boolean updateScore(Match match, int homeTeam, int awayTeam) {
+    public void updateScore(Match match, int homeTeam, int awayTeam) {
         checkIfMatchExists(match);
 
         var updatedMatch = new Match(
                 new Team(match.homeTeam().name(), homeTeam),
                 new Team(match.awayTeam().name(), awayTeam));
         matches.replace(updatedMatch, null);
-
-        return true;
     }
 
-    public boolean finishMatch(Match match) {
+    public void finishMatch(Match match) {
         checkIfMatchExists(match);
 
         matches.remove(match);
-
-        return true;
     }
 
     private void checkIfMatchExists(Match match) {
