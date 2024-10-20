@@ -1,20 +1,24 @@
-# Set Up
-* JVM: Amazon Corretto: 17.0.11
+# The Score Board
 
-# Coding Task
-You are working in a sports data company, and we would like you to develop a new Live Football
-World Cup Scoreboard library that shows all the ongoing matches and their scores.
-The scoreboard supports the following operations:
-1. Start a new match, assuming initial score 0 – 0 and adding it the scoreboard.
-   This should capture following parameters:
-   a. Home team
-   b. Away team
-2. Update score. This should receive a pair of absolute scores: home team score and away
-   team score.
-3. Finish match currently in progress. This removes a match from the scoreboard.
-4. Get a summary of matches in progress ordered by their total score. The matches with the
-   same total score will be returned ordered by the most recently started match in the
-   scoreboard.
+Design and implement a Live Football World Cup Scoreboard library in Java that meets the given requirements.
+
+## Start a New Match
+When starting a new match, we assume an initial score of 0 – 0. \
+The system should capture the following parameters:
+- Home Team
+- Away Team
+
+## Update Score
+This operation receives two absolute scores and updates the match score accordingly:
+- Home Team Score
+- Away Team Score 
+
+## Finish Match
+This operation removes a match from the scoreboard.
+
+## Get a Summary of Matches in Progress
+The system returns a summary of all ongoing matches ordered by their total score. \
+In case of a tie, matches should be ordered by their starting time (most recently started match appears first).
 
 # Test Scenarios
 
@@ -65,9 +69,3 @@ Test: Add matches with identical total scores but different starting times:
 "Team A" vs "Team B" (started first) with score 2-2.
 "Team C" vs "Team D" (started later) with score 1-3. \
 Expected Result: The match started later ("Team C vs Team D") should appear first in the list.
-
-# Improvements (out of the initial scope)
-* Add bulk operations: create matches, update matches, remove matches
-* Add a new field: MatchStatus as enum with values: STARTED, FINISHED
-* SourceBoard as Singleton
-* Thread-Safe SourceBoard operations
