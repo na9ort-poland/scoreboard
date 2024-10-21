@@ -6,7 +6,7 @@ import static org.techideas.constant.error.ErrorMessages.DUPLICATE_MATCH_EXCEPTI
 
 public class DuplicateMatchException extends RuntimeException {
 
-    public DuplicateMatchException(Match match) {
-        super(DUPLICATE_MATCH_EXCEPTION.formatted(match));
+    public DuplicateMatchException(String homeTeam, String awayTeam) {
+        super(DUPLICATE_MATCH_EXCEPTION.formatted(homeTeam, awayTeam));
     }
 }

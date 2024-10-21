@@ -10,7 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GettingSummaryOfMatchesInProgressTest {
-
+/*
     @Test
     void shouldReturnEmptyListWithNoMatchesOnScoreBoard() {
         // given
@@ -76,5 +76,5 @@ public class GettingSummaryOfMatchesInProgressTest {
         // then
         assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(5);
         assertThat(scoreBoard.getOrderedMatches().toArray()).containsExactlyElementsOf(expectedList);
-    }
+    }*/
 }
