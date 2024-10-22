@@ -2,6 +2,7 @@
 
 ## Improvements
 * Statuses: STARTED, IN_PROGRESS, FINISHED
+* Set MAX_VALUE score when create a ScoreBoard
 
 Design and implement a Live Football World Cup Scoreboard library in Java that meets the given requirements.
 
