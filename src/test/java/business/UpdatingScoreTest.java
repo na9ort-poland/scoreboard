@@ -53,7 +53,7 @@ public class UpdatingScoreTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 10001})
-    void shouldThrowExceptionWhenTryToUpdateWithInvalidValueScore(int value) {
+    void shouldThrowExceptionWhenTryToUpdateWithInvalidScoreValue(int value) {
         var newMatch = new Match("Home Team", "Away Team");
         var scoreBoard = new ScoreBoard();
 
