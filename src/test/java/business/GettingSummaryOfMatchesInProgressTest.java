@@ -1,12 +1,5 @@
 package business;
 
-import org.junit.jupiter.api.Test;
-import org.techideas.entity.Match;
-import org.techideas.entity.ScoreBoard;
-import org.techideas.entity.Team;
-
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GettingSummaryOfMatchesInProgressTest {

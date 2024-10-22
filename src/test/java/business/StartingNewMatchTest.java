@@ -20,7 +20,7 @@ public class StartingNewMatchTest {
         var expectedMatch = List.of(new Match("Home Team", "Away Team"));
 
         // when
-        scoreBoard.startMatch("Home Team", "Away Team");
+        scoreBoard.startMatch(new Match("Home Team", "Away Team"));
 
         // then
         assertThat(scoreBoard.showMatches().size()).isEqualTo(1);
@@ -35,10 +35,10 @@ public class StartingNewMatchTest {
     void shouldThrowExceptionWhenAddTheSameMatch() {
         // given
         var scoreBoard = new ScoreBoard();
-        scoreBoard.startMatch("Home Team", "Away Team");
+        scoreBoard.startMatch(new Match("Home Team", "Away Team"));
 
         // when && then
-        assertThatThrownBy(() -> scoreBoard.startMatch("Home Team", "Away Team"))
+        assertThatThrownBy(() -> scoreBoard.startMatch(new Match("Home Team", "Away Team")))
                 .isInstanceOf(DuplicateMatchException.class)
                 .hasMessage("The match %s - %s is already exists.".formatted("Home Team", "Away Team"));
     }
@@ -53,9 +53,9 @@ public class StartingNewMatchTest {
                 new Match("Germany", "France"));
 
         // when
-        scoreBoard.startMatch("Mexico", "Canada");
-        scoreBoard.startMatch("Spain", "Brazil");
-        scoreBoard.startMatch("Germany", "France");
+        scoreBoard.startMatch(new Match("Mexico", "Canada"));
+        scoreBoard.startMatch(new Match("Spain", "Brazil"));
+        scoreBoard.startMatch(new Match("Germany", "France"));
 
         // then
         assertThat(scoreBoard.showMatches())

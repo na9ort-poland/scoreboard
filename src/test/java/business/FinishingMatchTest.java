@@ -1,11 +1,5 @@
 package business;
 
-import org.junit.jupiter.api.Test;
-import org.techideas.entity.Match;
-import org.techideas.entity.ScoreBoard;
-import org.techideas.entity.Team;
-import org.techideas.exception.NotFoundMatchException;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 

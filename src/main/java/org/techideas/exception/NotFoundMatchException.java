@@ -4,7 +4,7 @@ import static org.techideas.constant.error.ErrorMessages.NOT_FOUND_MATCH_EXCEPTI
 
 public class NotFoundMatchException extends RuntimeException {
 
-    public NotFoundMatchException() {
-        super(NOT_FOUND_MATCH_EXCEPTION);
+    public NotFoundMatchException(String homeTeam, String awayTeam) {
+        super(NOT_FOUND_MATCH_EXCEPTION.formatted(homeTeam, awayTeam));
     }
 }
