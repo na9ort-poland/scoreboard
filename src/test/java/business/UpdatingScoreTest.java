@@ -63,7 +63,7 @@ public class UpdatingScoreTest {
     class InvalidScoreValueUpdate {
         @ParameterizedTest
         @ValueSource(ints = {-1, 10001})
-        void shouldThrowExceptionWhenTryToUpdateWithInvalidScoreValueWithDefaultRange(int value) {
+        void shouldThrowExceptionWhenTryToUpdateWithInvalidScoreValueInDefaultRange(int value) {
             var scoreBoard = new ScoreBoard();
             var newMatch = new Match("Home Team", "Away Team");
 
@@ -76,7 +76,7 @@ public class UpdatingScoreTest {
 
         @ParameterizedTest
         @ValueSource(ints = {-2, 21})
-        void shouldThrowExceptionWhenTryToUpdateWithInvalidScoreValueWithResetRange(int value) {
+        void shouldThrowExceptionWhenTryToUpdateWithInvalidScoreValueInResetRange(int value) {
             var newMatch = new Match("Home Team", "Away Team");
 
             // when && then
