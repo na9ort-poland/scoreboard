@@ -2,7 +2,7 @@
 
 ## Improvements
 * Statuses: STARTED, IN_PROGRESS, FINISHED
-* Set MAX_VALUE score when create a ScoreBoard
+* ~~Set MAX_VALUE score when create a ScoreBoard~~ Done.
 
 Design and implement a Live Football World Cup Scoreboard library in Java that meets the given requirements.
 
@@ -48,7 +48,11 @@ Expected Result: The scoreboard should reflect the updated score "Team A 1 - Tea
 Test: Try to update the score of a match that is not on the scoreboard. \
 Expected Result: An error or a message indicating that the match does not exist.
 
-### Scenario 2.3: Updating the score with an invalid value range.
+### Scenario 2.3: Updating the score with an invalid value in default range.
+Test: Try to update the match score with a value that does not belong a valid range. \
+Expected Result: An error or a message indicating that the score value does not belong a valid range.
+
+### Scenario 2.4: Updating the score with an invalid value in a reset range.
 Test: Try to update the match score with a value that does not belong a valid range. \
 Expected Result: An error or a message indicating that the score value does not belong a valid range.
 

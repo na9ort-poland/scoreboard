@@ -10,10 +10,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public record ScoreBoard (List<Match> matches) {
+public record ScoreBoard (
+        List<Match> matches,
+        int maxScoreValue
+) {
 
     public ScoreBoard() {
-        this(new ArrayList<>());
+        this(new ArrayList<>(), ValueRange.MAX_VALUE.getValue());
+    }
+
+    public ScoreBoard(int maxScoreValue) {
+        this(new ArrayList<>(), maxScoreValue);
     }
 
     public List<Match> showMatches() {
@@ -32,7 +39,7 @@ public record ScoreBoard (List<Match> matches) {
 
     public void updateScore(Match updatedMatch, int homeTeamScore, int awayTeamScore) {
         IntStream.of(homeTeamScore, awayTeamScore)
-                .filter(ValueRange::isNotValid)
+                .filter(this::isScoreValueNotValid)
                 .findFirst()
                 .ifPresent(individualValue -> {throw new InvalidScoreValueException(individualValue);});
 
@@ -57,5 +64,9 @@ public record ScoreBoard (List<Match> matches) {
         return matches.stream()
                 .anyMatch(match -> match.getHomeTeamName().equals(checkedMatch.getHomeTeamName())
                         && match.getAwayTeamName().equals(checkedMatch.getAwayTeamName()));
+    }
+
+    private boolean isScoreValueNotValid(int scoreValue) {
+        return scoreValue < ValueRange.MIN_VALUE.getValue() || scoreValue > maxScoreValue;
     }
 }

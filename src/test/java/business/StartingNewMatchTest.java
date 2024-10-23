@@ -1,5 +1,6 @@
 package business;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.techideas.entity.Match;
 import org.techideas.entity.ScoreBoard;
@@ -10,13 +11,20 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static util.constant.Constants.MAX_SCORE_VALUE;
 
 public class StartingNewMatchTest {
+
+    private ScoreBoard scoreBoard;
+
+    @BeforeEach
+    void init() {
+        scoreBoard = new ScoreBoard(MAX_SCORE_VALUE);
+    }
 
     @Test
     void shouldAddStartNewMatch() {
         // given
-        var scoreBoard = new ScoreBoard();
         var expectedMatch = List.of(new Match("Home Team", "Away Team"));
 
         // when
@@ -34,7 +42,6 @@ public class StartingNewMatchTest {
     @Test
     void shouldThrowExceptionWhenAddTheSameMatch() {
         // given
-        var scoreBoard = new ScoreBoard();
         scoreBoard.startMatch(new Match("Home Team", "Away Team"));
 
         // when && then
@@ -46,7 +53,6 @@ public class StartingNewMatchTest {
     @Test
     void shouldCreateMultipleUniqueMatches() {
         // given
-        var scoreBoard = new ScoreBoard();
         var expectedMatches = List.of(
                 new Match("Mexico", "Canada"),
                 new Match("Spain", "Brazil"),

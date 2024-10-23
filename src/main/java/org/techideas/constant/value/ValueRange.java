@@ -14,8 +14,4 @@ public enum ValueRange {
     public int getValue() {
         return value;
     }
-
-    public static boolean isNotValid(int value) {
-        return value < MIN_VALUE.value || value > MAX_VALUE.value;
-    }
 }

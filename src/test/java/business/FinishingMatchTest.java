@@ -1,5 +1,6 @@
 package business;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.techideas.entity.Match;
 import org.techideas.entity.ScoreBoard;
@@ -9,13 +10,20 @@ import java.util.Collection;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static util.constant.Constants.MAX_SCORE_VALUE;
 
 public class FinishingMatchTest {
+
+    private ScoreBoard scoreBoard;
+
+    @BeforeEach
+    void init() {
+        scoreBoard = new ScoreBoard(MAX_SCORE_VALUE);
+    }
 
     @Test
     void shouldRemoveMatchesFromScoreBoard() {
         // given
-        var scoreBoard = new ScoreBoard();
         scoreBoard.startMatch(new Match("Home Team One", "Away Team One"));
         scoreBoard.startMatch(new Match("Home Team Two", "Away Team Two"));
         scoreBoard.startMatch(new Match("Home Team Three", "Away Team Three"));
@@ -36,7 +44,6 @@ public class FinishingMatchTest {
     void shouldThrowExceptionWhenFinishNonExistingMatch() {
         // given
         var match = new Match("Home Team One", "Away Team One");
-        var scoreBoard = new ScoreBoard();
 
         // when
         assertThatThrownBy(() -> scoreBoard.finishMatch(match))
@@ -45,4 +52,3 @@ public class FinishingMatchTest {
                         match.getHomeTeamName(), match.getAwayTeamName()));
     }
 }
-

@@ -1,5 +1,6 @@
 package business;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.techideas.entity.Match;
 import org.techideas.entity.ScoreBoard;
@@ -8,22 +9,26 @@ import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static util.constant.Constants.MAX_SCORE_VALUE;
 
 public class GettingSummaryOfMatchesInProgressTest {
 
+    private ScoreBoard scoreBoard;
+
+    @BeforeEach
+    void init() {
+        scoreBoard = new ScoreBoard(MAX_SCORE_VALUE);
+    }
+
     @Test
     void shouldReturnEmptyListWithNoMatchesOnScoreBoard() {
-        // given
-        var scoreBoard = new ScoreBoard();
-
-        // when && then
+        // given && when && then
         assertThat(scoreBoard.showMatches()).returns(0, Collection::size);
     }
 
     @Test
     void shouldReturnMatchesListOrderedByTotalScore() {
         // given
-        var scoreBoard = new ScoreBoard();
         var expectedList = List.of(
                 new Match("Mexico", 5, "Canada", 5),
                 new Match("Germany", 2, "France", 2),
@@ -45,7 +50,6 @@ public class GettingSummaryOfMatchesInProgressTest {
     @Test
     void shouldReturnMatchesListOrderedByCreateDateTime() {
         // given
-        var scoreBoard = new ScoreBoard();
         var expectedList = List.of(
                 new Match("Uruguay", 6, "Italy", 6),
                 new Match("Spain", 10, "Brazil", 2),
