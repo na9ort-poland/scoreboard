@@ -34,7 +34,7 @@ public record ScoreBoard (List<Match> matches) {
         IntStream.of(homeTeamScore, awayTeamScore)
                 .filter(ValueRange::isNotValid)
                 .findFirst()
-                .ifPresent(individualValue -> { throw new InvalidScoreValueException(individualValue);});
+                .ifPresent(individualValue -> {throw new InvalidScoreValueException(individualValue);});
 
         var foundMatch = matches.stream()
                 .filter(match -> match.getHomeTeamName().equals(updatedMatch.getHomeTeamName())

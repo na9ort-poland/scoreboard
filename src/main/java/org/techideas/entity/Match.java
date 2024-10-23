@@ -4,11 +4,11 @@ import java.time.Instant;
 
 public class Match implements Comparable<Match> {
 
-    private String homeTeamName;
+    private final String homeTeamName;
     private Integer homeTeamScore;
-    private String awayTeamName;
+    private final String awayTeamName;
     private Integer awayTeamScore;
-    private Instant createdDateTime;
+    private final Instant createdDateTime;
 
     public Match(String homeTeamName, String awayTeamName) {
         this.homeTeamName = homeTeamName;
@@ -33,7 +33,8 @@ public class Match implements Comparable<Match> {
 
     @Override
     public int compareTo(Match match) {
-        return (match.homeTeamScore + match.awayTeamScore) - (this.homeTeamScore + this.awayTeamScore);
+        var scoreComparing = (match.homeTeamScore + match.awayTeamScore) - (this.homeTeamScore + this.awayTeamScore);
+        return scoreComparing == 0 ? match.createdDateTime.compareTo(this.createdDateTime) : scoreComparing;
     }
 
     public String getHomeTeamName() {

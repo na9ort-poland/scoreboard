@@ -48,6 +48,10 @@ Expected Result: The scoreboard should reflect the updated score "Team A 1 - Tea
 Test: Try to update the score of a match that is not on the scoreboard. \
 Expected Result: An error or a message indicating that the match does not exist.
 
+### Scenario 2.3: Updating the score with an invalid value range.
+Test: Try to update the match score with a value that does not belong a valid range. \
+Expected Result: An error or a message indicating that the score value does not belong a valid range.
+
 ## Finishing a Match
 ### Scenario 3.1: Finishing all matches.
 Test: Add and finish multiple matches. \

@@ -53,9 +53,9 @@ public class StartingNewMatchTest {
                 new Match("Germany", "France"));
 
         // when
-        scoreBoard.startMatch(new Match("Mexico", "Canada"));
-        scoreBoard.startMatch(new Match("Spain", "Brazil"));
         scoreBoard.startMatch(new Match("Germany", "France"));
+        scoreBoard.startMatch(new Match("Spain", "Brazil"));
+        scoreBoard.startMatch(new Match("Mexico", "Canada"));
 
         // then
         assertThat(scoreBoard.showMatches())

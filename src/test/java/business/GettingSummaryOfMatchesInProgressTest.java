@@ -1,16 +1,23 @@
 package business;
 
+import org.junit.jupiter.api.Test;
+import org.techideas.entity.Match;
+import org.techideas.entity.ScoreBoard;
+
+import java.util.Collection;
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GettingSummaryOfMatchesInProgressTest {
-/*
+
     @Test
     void shouldReturnEmptyListWithNoMatchesOnScoreBoard() {
         // given
         var scoreBoard = new ScoreBoard();
 
         // when && then
-        assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(0);
+        assertThat(scoreBoard.showMatches()).returns(0, Collection::size);
     }
 
     @Test
@@ -18,24 +25,21 @@ public class GettingSummaryOfMatchesInProgressTest {
         // given
         var scoreBoard = new ScoreBoard();
         var expectedList = List.of(
-                new Match(Team.ofNameAndScore("Mexico", 5), Team.ofNameAndScore("Canada", 5)),
-                new Match(Team.ofNameAndScore("Germany", 2), Team.ofNameAndScore("France", 2)),
-                new Match(Team.ofNameAndScore("Spain", 1), Team.ofNameAndScore("Brazil", 2)));
+                new Match("Mexico", 5, "Canada", 5),
+                new Match("Germany", 2, "France", 2),
+                new Match("Spain", 1, "Brazil", 2));
 
         // when
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Mexico", 5),
-                Team.ofNameAndScore("Canada", 5));
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Spain", 1),
-                Team.ofNameAndScore("Brazil", 2));
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Germany", 2),
-                Team.ofNameAndScore("France", 2));
+        scoreBoard.startMatch(new Match("Mexico", 5, "Canada", 5));
+        scoreBoard.startMatch(new Match("Germany", 2, "France", 2));
+        scoreBoard.startMatch(new Match("Spain", 1, "Brazil", 2));
 
         // then
-        assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(3);
-        assertThat(scoreBoard.getOrderedMatches().toArray()).containsExactlyElementsOf(expectedList);
+        assertThat(scoreBoard.showMatches())
+                .returns(3, Collection::size)
+                .usingRecursiveComparison()
+                .ignoringFields("createdDateTime")
+                .isEqualTo(expectedList);
     }
 
     @Test
@@ -43,31 +47,24 @@ public class GettingSummaryOfMatchesInProgressTest {
         // given
         var scoreBoard = new ScoreBoard();
         var expectedList = List.of(
-                new Match(Team.ofNameAndScore("Uruguay", 6), Team.ofNameAndScore("Italy", 6)),
-                new Match(Team.ofNameAndScore("Spain", 10), Team.ofNameAndScore("Brazil", 2)),
-                new Match(Team.ofNameAndScore("Mexico", 0), Team.ofNameAndScore("Canada", 5)),
-                new Match(Team.ofNameAndScore("Argentina", 3), Team.ofNameAndScore("Australia", 1)),
-                new Match(Team.ofNameAndScore("Germany", 2), Team.ofNameAndScore("France", 2)));
+                new Match("Uruguay", 6, "Italy", 6),
+                new Match("Spain", 10, "Brazil", 2),
+                new Match("Mexico", 0, "Canada", 5),
+                new Match("Argentina", 3, "Australia", 1),
+                new Match("Germany", 2, "France", 2));
 
         // when
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Mexico", 0),
-                Team.ofNameAndScore("Canada", 5));
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Spain", 10),
-                Team.ofNameAndScore("Brazil", 2));
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Germany", 2),
-                Team.ofNameAndScore("France", 2));
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Uruguay", 6),
-                Team.ofNameAndScore("Italy", 6));
-        scoreBoard.startMatch(
-                Team.ofNameAndScore("Argentina", 3),
-                Team.ofNameAndScore("Australia", 1));
+        scoreBoard.startMatch(new Match("Mexico", 0, "Canada", 5));
+        scoreBoard.startMatch(new Match("Spain", 10, "Brazil", 2));
+        scoreBoard.startMatch(new Match("Germany", 2, "France", 2));
+        scoreBoard.startMatch(new Match("Uruguay", 6, "Italy", 6));
+        scoreBoard.startMatch(new Match("Argentina", 3, "Australia", 1));
 
         // then
-        assertThat(scoreBoard.getOrderedMatches().size()).isEqualTo(5);
-        assertThat(scoreBoard.getOrderedMatches().toArray()).containsExactlyElementsOf(expectedList);
-    }*/
+        assertThat(scoreBoard.showMatches())
+                .returns(5, Collection::size)
+                .usingRecursiveComparison()
+                .ignoringFields("createdDateTime")
+                .isEqualTo(expectedList);
+    }
 }
