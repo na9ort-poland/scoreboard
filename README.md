@@ -1,9 +1,5 @@
 # The Score Board
 
-## Improvements
-* Statuses: STARTED, IN_PROGRESS, FINISHED
-* ~~Set MAX_VALUE score when create a ScoreBoard~~ Done.
-
 Design and implement a Live Football World Cup Scoreboard library in Java that meets the given requirements.
 
 ## Start a New Match
